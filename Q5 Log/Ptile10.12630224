@@ -1,0 +1,79 @@
+Processes = 64
+n = 1000000000, p = 64, pi = 3.1415926535897900, relative error = 9.90e-16, time (sec) =   0.0570
+Processes = 64
+n = 1000000000, p = 64, pi = 3.1415926535897900, relative error = 9.90e-16, time (sec) =   0.0573
+Processes = 64
+n = 1000000000, p = 64, pi = 3.1415926535897900, relative error = 9.90e-16, time (sec) =   0.0574
+Processes = 64
+n = 1000000000, p = 64, pi = 3.1415926535897900, relative error = 9.90e-16, time (sec) =   0.0574
+Processes = 64
+n = 1000000000, p = 64, pi = 3.1415926535897900, relative error = 9.90e-16, time (sec) =   0.0574
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@nxt2131>
+Subject: Job 12630224: <compute_pi_mpi> in cluster <Main_Compute> Done
+
+Job <compute_pi_mpi> was submitted from host <login8> by user <alireza.safdari> in cluster <Main_Compute>.
+Job was executed on host(s) <10*nxt2131>, in queue <mn_short>, as user <alireza.safdari> in cluster <Main_Compute>.
+                            <10*nxt2139>
+                            <10*nxt1363>
+                            <10*nxt1962>
+                            <10*nxt1965>
+                            <10*nxt2045>
+                            <4*nxt1734>
+</home/alireza.safdari> was used as the home directory.
+</scratch/user/alireza.safdari/HW_1> was used as the working directory.
+Started at Sun Sep 13 11:38:13 2020
+Results reported on Sun Sep 13 11:38:42 2020
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#BSUB -n 64 -R 'select[nxt] rusage[mem=150] span[ptile=10]' -M 150
+#BSUB -J compute_pi_mpi -o output.%J -L /bin/bash -W 0:10
+##
+##NECESSARY JOB SPECIFICATIONS
+##BSUB -J JobName             # Set the job name to "JobName"
+##BSUB -L /bin/bash           # Uses the bash login shell to initialize the job's execution environment.
+##BSUB -W hh:mm               # Sets job's runtime wall-clock limit in hours:minutes or just minutes (-mm)
+##BSUB -n NNN                 # NNN: total number of cores/jobslots to allocate for the job
+##BSUB -R "select[node-type]" # Select node-type: nxt, mem256gb, gpu, phi, mem1t, mem2t ...
+##BSUB -R "span[ptile=XX]"    # XX:  number of cores/jobslots per node to use. Also, a node selection criterion.
+##BSUB -R "rusage[mem=nnn]"   # Reserves nnn MBs per process/CPU for the job
+##BSUB -M mm                  # Sets the per process enforceable memory limit to nnn MB
+##BSUB -o OUTPUTFILE.%J       # Send stdout and stderr to "OUTPUTFILE.[jobID]"
+#
+# <--- at this point the current working directory is the one you submitted the job from.
+#
+module load intel/2017A       # load Intel software stack 
+#
+echo "Processes = 64"
+mpirun -np 64 ./compute_pi_mpi.exe 1000000000
+echo "Processes = 64"
+mpirun -np 64 ./compute_pi_mpi.exe 1000000000
+echo "Processes = 64"
+mpirun -np 64 ./compute_pi_mpi.exe 1000000000
+echo "Processes = 64"
+mpirun -np 64 ./compute_pi_mpi.exe 1000000000
+echo "Processes = 64"
+mpirun -np 64 ./compute_pi_mpi.exe 1000000000
+##
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   66.00 sec.
+    Max Memory :                                 597 MB
+    Average Memory :                             15.00 MB
+    Total Requested Memory :                     9600.00 MB
+    Delta Memory :                               9003.00 MB
+    Max Swap :                                   1 MB
+    Max Processes :                              7
+    Max Threads :                                9
+
+The output (if any) is above this job summary.
+

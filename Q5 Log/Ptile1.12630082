@@ -1,0 +1,136 @@
+Processes = 64
+n = 1000000000, p = 64, pi = 3.1415926535897900, relative error = 9.90e-16, time (sec) =   0.1310
+Processes = 64
+n = 1000000000, p = 64, pi = 3.1415926535897900, relative error = 9.90e-16, time (sec) =   0.1362
+Processes = 64
+n = 1000000000, p = 64, pi = 3.1415926535897900, relative error = 9.90e-16, time (sec) =   0.1305
+Processes = 64
+n = 1000000000, p = 64, pi = 3.1415926535897900, relative error = 9.90e-16, time (sec) =   0.1309
+Processes = 64
+n = 1000000000, p = 64, pi = 3.1415926535897900, relative error = 9.90e-16, time (sec) =   0.1316
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@nxt1657>
+Subject: Job 12630082: <compute_pi_mpi> in cluster <Main_Compute> Done
+
+Job <compute_pi_mpi> was submitted from host <login8> by user <alireza.safdari> in cluster <Main_Compute>.
+Job was executed on host(s) <1*nxt1657>, in queue <mn_short>, as user <alireza.safdari> in cluster <Main_Compute>.
+                            <1*nxt1602>
+                            <1*nxt1369>
+                            <1*nxt1964>
+                            <1*nxt1152>
+                            <1*nxt1248>
+                            <1*nxt1727>
+                            <1*nxt1225>
+                            <1*nxt1349>
+                            <1*nxt1358>
+                            <1*nxt1735>
+                            <1*nxt1304>
+                            <1*nxt1140>
+                            <1*nxt1448>
+                            <1*nxt1316>
+                            <1*nxt1930>
+                            <1*nxt1619>
+                            <1*nxt2131>
+                            <1*nxt2139>
+                            <1*nxt1363>
+                            <1*nxt1962>
+                            <1*nxt1965>
+                            <1*nxt1918>
+                            <1*nxt2045>
+                            <1*nxt1734>
+                            <1*nxt1537>
+                            <1*nxt2016>
+                            <1*nxt1753>
+                            <1*nxt1704>
+                            <1*nxt1705>
+                            <1*nxt2158>
+                            <1*nxt1623>
+                            <1*nxt1245>
+                            <1*nxt2101>
+                            <1*nxt1553>
+                            <1*nxt1543>
+                            <1*nxt1544>
+                            <1*nxt1545>
+                            <1*nxt1169>
+                            <1*nxt1840>
+                            <1*nxt1462>
+                            <1*nxt1468>
+                            <1*nxt1631>
+                            <1*nxt1639>
+                            <1*nxt2110>
+                            <1*nxt2115>
+                            <1*nxt1170>
+                            <1*nxt1936>
+                            <1*nxt1501>
+                            <1*nxt1503>
+                            <1*nxt1125>
+                            <1*nxt1507>
+                            <1*nxt1725>
+                            <1*nxt1345>
+                            <1*nxt1659>
+                            <1*nxt1161>
+                            <1*nxt1935>
+                            <1*nxt2036>
+                            <1*nxt1850>
+                            <1*nxt1853>
+                            <1*nxt1504>
+                            <1*nxt1505>
+                            <1*nxt1269>
+                            <1*nxt1561>
+</home/alireza.safdari> was used as the home directory.
+</scratch/user/alireza.safdari/HW_1> was used as the working directory.
+Started at Sun Sep 13 11:22:19 2020
+Results reported on Sun Sep 13 11:22:42 2020
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#BSUB -n 64 -R 'select[nxt] rusage[mem=150] span[ptile=1]' -M 150
+#BSUB -J compute_pi_mpi -o output.%J -L /bin/bash -W 0:10
+##
+##NECESSARY JOB SPECIFICATIONS
+##BSUB -J JobName             # Set the job name to "JobName"
+##BSUB -L /bin/bash           # Uses the bash login shell to initialize the job's execution environment.
+##BSUB -W hh:mm               # Sets job's runtime wall-clock limit in hours:minutes or just minutes (-mm)
+##BSUB -n NNN                 # NNN: total number of cores/jobslots to allocate for the job
+##BSUB -R "select[node-type]" # Select node-type: nxt, mem256gb, gpu, phi, mem1t, mem2t ...
+##BSUB -R "span[ptile=XX]"    # XX:  number of cores/jobslots per node to use. Also, a node selection criterion.
+##BSUB -R "rusage[mem=nnn]"   # Reserves nnn MBs per process/CPU for the job
+##BSUB -M mm                  # Sets the per process enforceable memory limit to nnn MB
+##BSUB -o OUTPUTFILE.%J       # Send stdout and stderr to "OUTPUTFILE.[jobID]"
+#
+# <--- at this point the current working directory is the one you submitted the job from.
+#
+module load intel/2017A       # load Intel software stack 
+#
+echo "Processes = 64"
+mpirun -np 64 ./compute_pi_mpi.exe 1000000000
+echo "Processes = 64"
+mpirun -np 64 ./compute_pi_mpi.exe 1000000000
+echo "Processes = 64"
+mpirun -np 64 ./compute_pi_mpi.exe 1000000000
+echo "Processes = 64"
+mpirun -np 64 ./compute_pi_mpi.exe 1000000000
+echo "Processes = 64"
+mpirun -np 64 ./compute_pi_mpi.exe 1000000000
+##
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   72.76 sec.
+    Max Memory :                                 812 MB
+    Average Memory :                             14.50 MB
+    Total Requested Memory :                     9600.00 MB
+    Delta Memory :                               8788.00 MB
+    Max Swap :                                   1 MB
+    Max Processes :                              8
+    Max Threads :                                10
+
+The output (if any) is above this job summary.
+

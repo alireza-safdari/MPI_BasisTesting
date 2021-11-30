@@ -1,0 +1,104 @@
+Processes = 64
+n = 100000000, p = 64, pi = 3.1415926535897953, relative error = 7.07e-16, time (sec) =   0.0525
+Processes = 2
+n = 100000000, p = 2, pi = 3.1415926535896133, relative error = 5.72e-14, time (sec) =   0.1221
+Processes = 4
+n = 100000000, p = 4, pi = 3.1415926535897749, relative error = 5.80e-15, time (sec) =   0.0611
+Processes = 8
+n = 100000000, p = 8, pi = 3.1415926535897740, relative error = 6.08e-15, time (sec) =   0.0319
+Processes = 16
+n = 100000000, p = 16, pi = 3.1415926535897940, relative error = 2.83e-16, time (sec) =   0.0245
+Processes = 32
+n = 100000000, p = 32, pi = 3.1415926535897936, relative error = 1.41e-16, time (sec) =   0.0088
+Processes = 1
+n = 100000000, p = 1, pi = 3.1415926535902168, relative error = 1.35e-13, time (sec) =   0.2434
+Processes = 64
+n = 100000000, p = 64, pi = 3.1415926535897953, relative error = 7.07e-16, time (sec) =   0.0500
+Processes = 64
+n = 100000000, p = 64, pi = 3.1415926535897953, relative error = 7.07e-16, time (sec) =   0.0553
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@nxt1730>
+Subject: Job 12629607: <compute_pi_mpi> in cluster <Main_Compute> Done
+
+Job <compute_pi_mpi> was submitted from host <login8> by user <alireza.safdari> in cluster <Main_Compute>.
+Job was executed on host(s) <4*nxt1730>, in queue <mn_short>, as user <alireza.safdari> in cluster <Main_Compute>.
+                            <4*nxt1739>
+                            <4*nxt1224>
+                            <4*nxt1909>
+                            <4*nxt1315>
+                            <4*nxt1650>
+                            <4*nxt1602>
+                            <4*nxt1369>
+                            <4*nxt1152>
+                            <4*nxt1727>
+                            <4*nxt1606>
+                            <4*nxt1230>
+                            <4*nxt1349>
+                            <4*nxt1930>
+                            <4*nxt1225>
+                            <4*nxt2131>
+</home/alireza.safdari> was used as the home directory.
+</scratch/user/alireza.safdari/HW_1> was used as the working directory.
+Started at Sun Sep 13 10:20:04 2020
+Results reported on Sun Sep 13 10:20:32 2020
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#BSUB -n 64 -R 'select[nxt] rusage[mem=150] span[ptile=4]' -M 150
+#BSUB -J compute_pi_mpi -o output.%J -L /bin/bash -W 0:10
+##
+##NECESSARY JOB SPECIFICATIONS
+##BSUB -J JobName             # Set the job name to "JobName"
+##BSUB -L /bin/bash           # Uses the bash login shell to initialize the job's execution environment.
+##BSUB -W hh:mm               # Sets job's runtime wall-clock limit in hours:minutes or just minutes (-mm)
+##BSUB -n NNN                 # NNN: total number of cores/jobslots to allocate for the job
+##BSUB -R "select[node-type]" # Select node-type: nxt, mem256gb, gpu, phi, mem1t, mem2t ...
+##BSUB -R "span[ptile=XX]"    # XX:  number of cores/jobslots per node to use. Also, a node selection criterion.
+##BSUB -R "rusage[mem=nnn]"   # Reserves nnn MBs per process/CPU for the job
+##BSUB -M mm                  # Sets the per process enforceable memory limit to nnn MB
+##BSUB -o OUTPUTFILE.%J       # Send stdout and stderr to "OUTPUTFILE.[jobID]"
+#
+# <--- at this point the current working directory is the one you submitted the job from.
+#
+module load intel/2017A       # load Intel software stack 
+#
+echo "Processes = 64"
+mpirun -np 64 ./compute_pi_mpi.exe 100000000
+echo "Processes = 2"
+mpirun -np 2 ./compute_pi_mpi.exe 100000000
+echo "Processes = 4"
+mpirun -np 4 ./compute_pi_mpi.exe 100000000
+echo "Processes = 8"
+mpirun -np 8 ./compute_pi_mpi.exe 100000000
+echo "Processes = 16"
+mpirun -np 16 ./compute_pi_mpi.exe 100000000
+echo "Processes = 32"
+mpirun -np 32 ./compute_pi_mpi.exe 100000000
+echo "Processes = 1"
+mpirun -np 1 ./compute_pi_mpi.exe 100000000
+echo "Processes = 64"
+mpirun -np 64 ./compute_pi_mpi.exe 100000000
+echo "Processes = 64"
+mpirun -np 64 ./compute_pi_mpi.exe 100000000
+##
+
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   50.00 sec.
+    Max Memory :                                 27 MB
+    Average Memory :                             17.00 MB
+    Total Requested Memory :                     9600.00 MB
+    Delta Memory :                               9573.00 MB
+    Max Processes :                              7
+    Max Threads :                                9
+
+The output (if any) is above this job summary.
+
